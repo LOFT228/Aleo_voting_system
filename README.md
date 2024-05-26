@@ -1,10 +1,15 @@
-program voting_system_kx0d8ki.aleo {
+//// Ця програма є системою для голосування за пропозиції. Вона дозволяє користувачам створювати нові пропозиції видавати квитки для голосування,здійснювати голосування "за" або "проти" пропозицій, а також переглядати результати голосування.Програма:
+
+
+
+{
 
     struct ProposalInfo {
         title as field;
         content as field;
         proposer as address;
     }
+
 
     record Proposal {
         owner as address.private;
@@ -63,6 +68,8 @@ program voting_system_kx0d8ki.aleo {
         output r3 as voting_system_kx0d8ki.aleo/new_ticket.future;
     }
 
+
+
     finalize new_ticket {
         input r0 as field.public;
         get.or_use tickets[r0] 0u64 into r1;
@@ -83,6 +90,8 @@ program voting_system_kx0d8ki.aleo {
         add r1 1u64 into r2;
         set r2 into agree_votes[r0];
     }
+
+
 
     // Функція для голосування "проти"
     function disagree {
@@ -115,3 +124,6 @@ program voting_system_kx0d8ki.aleo {
     }
 
 }
+
+
+// тут кінець
